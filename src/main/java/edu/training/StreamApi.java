@@ -10,7 +10,7 @@ public class StreamApi {
         throw new UnsupportedOperationException();
     }
 
-    public static List<String> getEmployeeNamesStartedFrom(List<Employee> employees) {
+    public static List<String> getEmployeeNamesStartedFrom(List<Employee> employees, String strStart) {
         throw new UnsupportedOperationException();
     }
 
@@ -30,11 +30,11 @@ public class StreamApi {
         throw new UnsupportedOperationException();
     }
 
-    public static List<Employee> getEmployeesThatOlderThan25Years(List<Employee> employees) {
+    public static List<Employee> getEmployeesOlderThan25Years(List<Employee> employees) {
         throw new UnsupportedOperationException();
     }
 
-    public static List<Employee> getEmployeeNamesWithTop5Salary(List<Employee> employees) {
+    public static List<String> getEmployeeNamesWithTop3Salary(List<Employee> employees) {
         throw new UnsupportedOperationException();
     }
 }

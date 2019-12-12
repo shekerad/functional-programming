@@ -24,5 +24,5 @@ public class Employee {
 
     private Set<Skill> skills;
 
-    public enum Skill {JAVA, C, PYTHON, KOTLIN, SCALA, GOLANG}
+    public enum Skill {JAVA, C, PYTHON, KOTLIN, SCALA, GOLANG, JAVASCRIPT}
 }

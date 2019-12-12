@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class EmployeeUtil {
 
-    private static Employee employee1 = Employee.builder()
+    static Employee employee1 = Employee.builder()
             .name("Ivan")
             .dateOfBirth(LocalDate.of(1992, 3, 2))
             .dateOfJoin(LocalDate.of(2015, 9, 1))
@@ -18,7 +18,7 @@ public class EmployeeUtil {
             .skills(Set.of(Employee.Skill.JAVA))
             .build();
 
-    private static Employee employee2 = Employee.builder()
+    static Employee employee2 = Employee.builder()
             .name("Olesia")
             .dateOfBirth(LocalDate.of(1995, 5, 24))
             .dateOfJoin(LocalDate.of(2017, 1, 5))
@@ -28,9 +28,9 @@ public class EmployeeUtil {
             .skills(Set.of(Employee.Skill.PYTHON))
             .build();
 
-    private static Employee employee3 = Employee.builder()
+    static Employee employee3 = Employee.builder()
             .name("Danylo")
-            .dateOfBirth(LocalDate.of(1981, 5, 21))
+            .dateOfBirth(LocalDate.of(1987, 5, 21))
             .dateOfJoin(LocalDate.of(2019, 6, 14))
             .salary(310L)
             .workingBlock("2R")
@@ -38,7 +38,7 @@ public class EmployeeUtil {
             .skills(Set.of(Employee.Skill.JAVA, Employee.Skill.GOLANG))
             .build();
 
-    private static Employee employee4 = Employee.builder()
+    static Employee employee4 = Employee.builder()
             .name("Kateryna")
             .dateOfBirth(LocalDate.of(1981, 5, 21))
             .dateOfJoin(LocalDate.of(2018, 10, 12))
@@ -48,9 +48,9 @@ public class EmployeeUtil {
             .skills(Set.of(Employee.Skill.JAVA, Employee.Skill.SCALA))
             .build();
 
-    private static Employee employee5 = Employee.builder()
+    static Employee employee5 = Employee.builder()
             .name("Petro")
-            .dateOfBirth(LocalDate.of(1981, 5, 21))
+            .dateOfBirth(LocalDate.of(1985, 5, 21))
             .dateOfJoin(LocalDate.of(2018, 10, 12))
             .salary(140L)
             .workingBlock("4L")
@@ -58,7 +58,7 @@ public class EmployeeUtil {
             .skills(Set.of(Employee.Skill.KOTLIN))
             .build();
 
-    static  List<Employee> getEmployees() {
-        return List.of(employee1,employee2, employee3, employee4, employee5);
+    static List<Employee> getEmployees() {
+        return List.of(employee1, employee2, employee3, employee4, employee5);
     }
 }
