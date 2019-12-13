@@ -65,7 +65,7 @@ class StreamApiTest {
     void getEmployeesOlderThan25Years() {
         List<Employee> actual = StreamApi.getEmployeesOlderThan25Years(getEmployees());
         assertThat(actual)
-                .hasSize(3)
+                .hasSize(4)
                 .contains(employee3, employee4, employee5, employee1);
     }
 
