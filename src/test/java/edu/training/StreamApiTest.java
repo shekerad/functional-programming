@@ -66,11 +66,11 @@ class StreamApiTest {
         List<Employee> actual = StreamApi.getEmployeesOlderThan25Years(getEmployees());
         assertThat(actual)
                 .hasSize(3)
-                .contains(employee3, employee4, employee5);
+                .contains(employee3, employee4, employee5, employee1);
     }
 
     @Test
-    void getEmployeeNamesWithTop5Salary() {
+    void getEmployeeNamesWithTop3Salary() {
         List<String> actual = StreamApi.getEmployeeNamesWithTop3Salary(getEmployees());
         assertThat(actual)
                 .hasSize(3)
