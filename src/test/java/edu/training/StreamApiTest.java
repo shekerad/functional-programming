@@ -25,8 +25,8 @@ class StreamApiTest {
     void getEmployeeNames() {
         List<String> actual = StreamApi.getEmployeeNames(getEmployees());
         assertThat(actual)
-                .hasSize(5)
-                .contains("Ivan", "Olesia", "Danylo", "Kateryna", "Petro");
+                .hasSize(6)
+                .contains("Ivan", "Olesia", "Danylo", "Kateryna", "Petro", "Ivan");
     }
 
     @Test
@@ -40,7 +40,7 @@ class StreamApiTest {
     @Test
     void getEmployeeNamesSorted() {
         List<String> actual = StreamApi.getEmployeeNamesSorted(getEmployees());
-        assertEquals(List.of("Danylo", "Ivan", "Kateryna", "Olesia", "Petro"), actual);
+        assertEquals(List.of("Danylo", "Ivan", "Ivan", "Kateryna", "Olesia", "Petro"), actual);
     }
 
     @Test
@@ -139,14 +139,14 @@ class StreamApiTest {
 
     @Test
     void getTotalCompanySalary() {
-        int actual = StreamApi.getTotalCompanySalary(getEmployees());
+        long actual = StreamApi.getTotalCompanySalary(getEmployees());
         assertEquals(1620, actual);
     }
 
     @Test
     void raiseSalaryForAllCompany() {
         List<Employee> employees = getEmployees().stream().map(SerializationUtils::clone).collect(Collectors.toList());
-        StreamApi.raiseSalaryForAllEmployees(100);
+        StreamApi.raiseSalaryForAllEmployees(employees, 100);
         assertThat(employees).extracting(Employee::getSalary)
                 .contains(300L, 400L, 410L, 570L, 240L, 300L);
     }
@@ -159,7 +159,7 @@ class StreamApiTest {
 
     @Test
     void calculateMaxSalaryOnMarket() {
-        int actual = StreamApi.calculateMaxSalaryOnMarket(getCompanies());
+        long actual = StreamApi.calculateMaxSalaryOnMarket(getCompanies());
         assertEquals(470L, actual);
     }
 }

@@ -59,11 +59,11 @@ public class StreamApi {
         throw new UnsupportedOperationException();
     }
 
-    public static int getTotalCompanySalary(List<Employee> employees) {
+    public static long getTotalCompanySalary(List<Employee> employees) {
         throw new UnsupportedOperationException();
     }
 
-    public static void raiseSalaryForAllEmployees(int raiseValue) {
+    public static void raiseSalaryForAllEmployees(List<Employee> employees, int raiseValue) {
         throw new UnsupportedOperationException();
     }
 
@@ -71,7 +71,7 @@ public class StreamApi {
         throw new UnsupportedOperationException();
     }
 
-    public static int calculateMaxSalaryOnMarket(List<Company> companies) {
+    public static long calculateMaxSalaryOnMarket(List<Company> companies) {
         throw new UnsupportedOperationException();
     }
 
