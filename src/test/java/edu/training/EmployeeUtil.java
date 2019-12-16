@@ -1,5 +1,6 @@
 package edu.training;
 
+import edu.training.domain.Company;
 import edu.training.domain.Employee;
 
 import java.time.LocalDate;
@@ -58,7 +59,25 @@ public class EmployeeUtil {
             .skills(Set.of(Employee.Skill.KOTLIN))
             .build();
 
+    static Employee employee6 = Employee.builder()
+            .name("Ivan")
+            .dateOfBirth(LocalDate.of(1999, 6, 25))
+            .dateOfJoin(LocalDate.of(2016, 10, 12))
+            .salary(200L)
+            .workingBlock("5C")
+            .workingPlaceNumber(22)
+            .skills(Set.of(Employee.Skill.JAVASCRIPT))
+            .build();
+
+
     static List<Employee> getEmployees() {
-        return List.of(employee1, employee2, employee3, employee4, employee5);
+        return List.of(employee1, employee2, employee3, employee4, employee5, employee6);
+    }
+
+    static List<Company> getCompanies() {
+        List<Employee> employees = getEmployees();
+        Company company = new Company();
+        company.setEmployees(employees);
+        return List.of(company);
     }
 }

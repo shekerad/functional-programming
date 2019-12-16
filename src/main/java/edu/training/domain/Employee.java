@@ -3,12 +3,13 @@ package edu.training.domain;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
 
 @Data
 @Builder
-public class Employee {
+public class Employee implements Serializable {
 
     private String name;
 

@@ -1,17 +1,23 @@
 package edu.training;
 
 import edu.training.domain.Employee;
+import org.apache.commons.lang3.SerializationUtils;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static edu.training.EmployeeUtil.employee1;
 import static edu.training.EmployeeUtil.employee3;
 import static edu.training.EmployeeUtil.employee4;
 import static edu.training.EmployeeUtil.employee5;
+import static edu.training.EmployeeUtil.getCompanies;
 import static edu.training.EmployeeUtil.getEmployees;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class StreamApiTest {
 
@@ -75,5 +81,85 @@ class StreamApiTest {
         assertThat(actual)
                 .hasSize(3)
                 .contains("Kateryna", "Danylo", "Olesia");
+    }
+
+    @Test
+    void getEmployeeHiredInYearSortedByNames() {
+        List<Employee> actual = StreamApi.getEmployeeHiredInYearSortedByNames(getEmployees(), 2018);
+        assertEquals(List.of(employee4, employee5), actual);
+    }
+
+    @Test
+    void getEmployeeHiredInYearSortedByNamesEmptyResult() {
+        List<Employee> actual = StreamApi.getEmployeeHiredInYearSortedByNames(getEmployees(), 2010);
+        assertEquals(Collections.emptyList(), actual);
+    }
+
+    @Test
+    void getUniqueEmployeeNames() {
+        List<String> actual = StreamApi.getUniqueEmployeeNames(getEmployees());
+        assertThat(actual).hasSize(5).contains("Ivan", "Olesia", "Danylo", "Kateryna", "Petro");
+    }
+
+    @Test
+    void isAnyEmployeeWithName() {
+        boolean actual = StreamApi.isAnyEmployeeWithName(getEmployees(), "Danylo");
+        assertTrue(actual);
+    }
+
+    @Test
+    void isAnyEmployeeWithNameNegative() {
+        boolean actual = StreamApi.isAnyEmployeeWithName(getEmployees(), "Olena");
+        assertFalse(actual);
+    }
+
+    @Test
+    void isAnyEmployeeWithNameWorksInBlock() {
+        boolean actual = StreamApi.isAnyEmployeeWithNameWorksInBlock(getEmployees(), "Petro", "4L");
+        assertTrue(actual);
+    }
+
+    @Test
+    void isAnyEmployeeWithNameWorksInBlockNegative() {
+        boolean actual = StreamApi.isAnyEmployeeWithNameWorksInBlock(getEmployees(), "Petro", "3K");
+        assertFalse(actual);
+    }
+
+    @Test
+    void isAnyEmployeeWithSalaryLessThan() {
+        boolean actual = StreamApi.isAnyEmployeeWithSalaryLessThan(getEmployees(), 500);
+        assertTrue(actual);
+    }
+
+    @Test
+    void isAnyEmployeeWithSalaryLessThanNegative() {
+        boolean actual = StreamApi.isAnyEmployeeWithSalaryLessThan(getEmployees(), 100);
+        assertFalse(actual);
+    }
+
+    @Test
+    void getTotalCompanySalary() {
+        int actual = StreamApi.getTotalCompanySalary(getEmployees());
+        assertEquals(1620, actual);
+    }
+
+    @Test
+    void raiseSalaryForAllCompany() {
+        List<Employee> employees = getEmployees().stream().map(SerializationUtils::clone).collect(Collectors.toList());
+        StreamApi.raiseSalaryForAllEmployees(100);
+        assertThat(employees).extracting(Employee::getSalary)
+                .contains(300L, 400L, 410L, 570L, 240L, 300L);
+    }
+
+    @Test
+    void countNumberOfEmployeesWithSalaryMoreThan() {
+        int actual = StreamApi.countNumberOfEmployeesWithSalaryMoreThan(getEmployees(), 400);
+        assertEquals(1, actual);
+    }
+
+    @Test
+    void calculateMaxSalaryOnMarket() {
+        int actual = StreamApi.calculateMaxSalaryOnMarket(getCompanies());
+        assertEquals(470L, actual);
     }
 }

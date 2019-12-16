@@ -1,5 +1,6 @@
 package edu.training;
 
+import edu.training.domain.Company;
 import edu.training.domain.Employee;
 
 import java.util.List;
@@ -37,4 +38,41 @@ public class StreamApi {
     public static List<String> getEmployeeNamesWithTop3Salary(List<Employee> employees) {
         throw new UnsupportedOperationException();
     }
+
+    public static List<Employee> getEmployeeHiredInYearSortedByNames(List<Employee> employees, int year) {
+        throw new UnsupportedOperationException();
+    }
+
+    public static List<String> getUniqueEmployeeNames(List<Employee> employees) {
+        throw new UnsupportedOperationException();
+    }
+
+    public static boolean isAnyEmployeeWithName(List<Employee> employees, String name) {
+        throw new UnsupportedOperationException();
+    }
+
+    public static boolean isAnyEmployeeWithNameWorksInBlock(List<Employee> employees, String name, String block) {
+        throw new UnsupportedOperationException();
+    }
+
+    public static boolean isAnyEmployeeWithSalaryLessThan(List<Employee> employees, int salary) {
+        throw new UnsupportedOperationException();
+    }
+
+    public static int getTotalCompanySalary(List<Employee> employees) {
+        throw new UnsupportedOperationException();
+    }
+
+    public static void raiseSalaryForAllEmployees(int raiseValue) {
+        throw new UnsupportedOperationException();
+    }
+
+    public static int countNumberOfEmployeesWithSalaryMoreThan(List<Employee> employees, int salary) {
+        throw new UnsupportedOperationException();
+    }
+
+    public static int calculateMaxSalaryOnMarket(List<Company> companies) {
+        throw new UnsupportedOperationException();
+    }
+
 }
