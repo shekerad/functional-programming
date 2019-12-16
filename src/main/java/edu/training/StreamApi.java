@@ -63,39 +63,57 @@ public class StreamApi {
     }
 
     public static List<Employee> getEmployeeHiredInYearSortedByNames(List<Employee> employees, int year) {
-        throw new UnsupportedOperationException();
+        return employees.stream()
+                .filter(employee -> employee.getDateOfJoin().getYear() == year)
+                .sorted(Comparator.comparing(Employee::getName))
+                .collect(Collectors.toList());
+
     }
 
     public static List<String> getUniqueEmployeeNames(List<Employee> employees) {
-        throw new UnsupportedOperationException();
+        return employees.stream()
+                .map(Employee::getName)
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     public static boolean isAnyEmployeeWithName(List<Employee> employees, String name) {
-        throw new UnsupportedOperationException();
+        return employees.stream()
+                .anyMatch(employee -> employee.getName().equals(name));
     }
 
     public static boolean isAnyEmployeeWithNameWorksInBlock(List<Employee> employees, String name, String block) {
-        throw new UnsupportedOperationException();
+        return employees.stream()
+                .filter(employee -> employee.getWorkingBlock().equals(block))
+                .anyMatch(employee -> employee.getName().equals(name));
     }
 
     public static boolean isAnyEmployeeWithSalaryLessThan(List<Employee> employees, int salary) {
-        throw new UnsupportedOperationException();
+        return employees.stream()
+                .anyMatch(employee -> employee.getSalary() < salary);
     }
 
     public static long getTotalCompanySalary(List<Employee> employees) {
-        throw new UnsupportedOperationException();
+        return employees.stream()
+                .map(Employee::getSalary)
+                .reduce(0L, Long::sum);
     }
 
     public static void raiseSalaryForAllEmployees(List<Employee> employees, int raiseValue) {
-        throw new UnsupportedOperationException();
+        employees.forEach(employee -> employee.setSalary(employee.getSalary() + raiseValue));
     }
 
     public static int countNumberOfEmployeesWithSalaryMoreThan(List<Employee> employees, int salary) {
-        throw new UnsupportedOperationException();
+        return (int) employees.stream()
+                .filter(employee -> employee.getSalary() > salary)
+                .count();
     }
 
     public static long calculateMaxSalaryOnMarket(List<Company> companies) {
-        throw new UnsupportedOperationException();
+        return companies.stream()
+                .flatMap(company -> company.getEmployees().stream())
+                .map(Employee::getSalary)
+                .reduce(0L, (a, b) -> a > b ? a : b);
     }
 
 }
