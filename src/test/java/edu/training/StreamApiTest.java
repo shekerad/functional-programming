@@ -60,7 +60,7 @@ class StreamApiTest {
     }
 
     @Test
-    void getEmployeesWithJava() {
+    void getEmployeesFrom3kBlock() {
         List<Employee> actual = StreamApi.getEmployeesFrom3KBlock(getEmployees());
         assertThat(actual)
                 .hasSize(1)
